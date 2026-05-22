@@ -1,1 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <title>Bsun Nepali Date Converter</title>
+
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Nepali Date Converter Library - CDN version for browser testing -->
+  <script src="https://cdn.jsdelivr.net/npm/nepali-date-converter/dist/nepali-date-converter.umd.js"></script>
+</head>
+
+<body>
+  <main class="app">
+
+    <div class="copyright">
+      Copyright © Bisan Subba 2026<br />
+      All rights reserved.
+    </div>
+
+    <header class="hero">
+      <h1>Bsun Nepali Date Converter</h1>
+      <p class="developer">Developer: Bisan Subba</p>
+      <p class="subtitle">
+        Convert Bikram Sambat (BS) dates to English AD dates and English AD dates to Nepali BS dates.
+      </p>
+    </header>
+
+    <section class="today-card">
+      <h2>Today’s Nepali Date</h2>
+      <p id="todayBs">Loading today's BS date...</p>
+      <small id="todayAd">English date will appear here.</small>
+    </section>
+
+    <section class="converter-grid">
+
+      <div class="panel">
+        <h2>AD to BS</h2>
+
+        <label for="adDate">Select English Date</label>
+        <input type="date" id="adDate" />
+
+        <button onclick="convertAdToBs()">Convert to BS</button>
+
+        <div class="result-box">
+          <p id="adToBsResult">Result appears here</p>
+          <small id="adToBsDay">Day of week appears here.</small>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2>BS to AD</h2>
+
+        <label>Nepali Year</label>
+        <input type="number" id="bsYear" placeholder="Example: 2081" />
+
+        <label>Nepali Month</label>
+        <select id="bsMonth">
+          <option value="1">Baisakh</option>
+          <option value="2">Jestha</option>
+          <option value="3">Asar</option>
+          <option value="4">Shrawan</option>
+          <option value="5">Bhadra</option>
+          <option value="6">Ashwin</option>
+          <option value="7">Kartik</option>
+          <option value="8">Mangsir</option>
+          <option value="9">Poush</option>
+          <option value="10">Magh</option>
+          <option value="11">Falgun</option>
+          <option value="12">Chaitra</option>
+        </select>
+
+        <label>Nepali Day</label>
+        <input type="number" id="bsDay" placeholder="Example: 15" />
+
+        <button onclick="convertBsToAd()">Convert to AD</button>
+
+        <div class="result-box">
+          <p id="bsToAdResult">Result appears here</p>
+          <small id="bsToAdDay">Day of week appears here.</small>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="info-card">
+      <h2>Nepali Months</h2>
+      <div class="months">
+        <span>Baisakh</span>
+        <span>Jestha</span>
+        <span>Asar</span>
+        <span>Shrawan</span>
+        <span>Bhadra</span>
+        <span>Ashwin</span>
+        <span>Kartik</span>
+        <span>Mangsir</span>
+        <span>Poush</span>
+        <span>Magh</span>
+        <span>Falgun</span>
+        <span>Chaitra</span>
+      </div>
+    </section>
+
+    <section class="info-card">
+      <h2>Festivals</h2>
+      <p>
+        Festival reminders can be added in a future version.
+      </p>
+    </section>
+
+    <footer>
+      Developer: Bisan Subba · © Bisan Subba 2026 · All rights reserved.
+    </footer>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
