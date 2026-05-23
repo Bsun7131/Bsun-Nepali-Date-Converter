@@ -1,24 +1,20 @@
-function formatDay(date) {
-  return date.toLocaleDateString("en-US", {
-    weekday: "long"
-  });
+function todayString() {
+  const d = new Date();
+  return d.toISOString().split("T")[0];
 }
 
 function loadTodayBsDate() {
-
-  const today = new Date();
-
-  const bsDate = new NepaliDate(today);
+  const today = todayString();
+  const bs = new DateConverter(today).toBs();
 
   document.getElementById("todayBs").textContent =
-    `${bsDate.getYear()} ${bsDate.getMonthName()} ${bsDate.getDate()}`;
+    `${bs.year} ${bs.month} ${bs.date} BS`;
 
   document.getElementById("todayAd").textContent =
-    `${today.toDateString()} · ${formatDay(today)}`;
+    `${today} · ${bs.day}`;
 }
 
 function convertAdToBs() {
-
   const adInput = document.getElementById("adDate").value;
 
   if (!adInput) {
@@ -26,59 +22,34 @@ function convertAdToBs() {
     return;
   }
 
-  const adDate = new Date(adInput);
-
-  const bsDate = new NepaliDate(adDate);
+  const bs = new DateConverter(adInput).toBs();
 
   document.getElementById("adToBsResult").textContent =
-    `${bsDate.getYear()} ${bsDate.getMonthName()} ${bsDate.getDate()}`;
+    `${bs.year} ${bs.month} ${bs.date} BS`;
 
-  document.getElementById("adToBsDay").textContent =
-    formatDay(adDate);
+  document.getElementById("adToBsDay").textContent = bs.day;
 }
 
 function convertBsToAd() {
+  const year = document.getElementById("bsYear").value;
+  const month = document.getElementById("bsMonth").value.padStart(2, "0");
+  const day = document.getElementById("bsDay").value.padStart(2, "0");
 
-  const year = parseInt(
-    document.getElementById("bsYear").value
-  );
-
-  const month = parseInt(
-    document.getElementById("bsMonth").value
-  ) - 1;
-
-  const day = parseInt(
-    document.getElementById("bsDay").value
-  );
-
-  if (!year || !day) {
+  if (!year || !month || !day) {
     alert("Please complete BS date fields.");
     return;
   }
 
   try {
-
-    const bsDate = new NepaliDate(
-      year,
-      month,
-      day
-    );
-
-    const adDate = bsDate.toJsDate();
+    const ad = new DateConverter(`${year}-${month}-${day}`).toAd();
 
     document.getElementById("bsToAdResult").textContent =
-      adDate.toDateString();
+      `${ad.year}-${String(ad.month).padStart(2, "0")}-${String(ad.date).padStart(2, "0")} AD`;
 
-    document.getElementById("bsToAdDay").textContent =
-      formatDay(adDate);
-
+    document.getElementById("bsToAdDay").textContent = ad.day;
   } catch (error) {
-
-    document.getElementById("bsToAdResult").textContent =
-      "Invalid BS date.";
-
-    document.getElementById("bsToAdDay").textContent =
-      "";
+    document.getElementById("bsToAdResult").textContent = "Invalid BS date.";
+    document.getElementById("bsToAdDay").textContent = "";
   }
 }
 
