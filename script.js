@@ -2,13 +2,19 @@ function todayString() {
   const d = new Date();
   return d.toISOString().split("T")[0];
 }
+function formatAdDate(ad) {
+  return `${String(ad.date).padStart(2, "0")}-${String(ad.month).padStart(2, "0")}-${ad.year} AD`;
+}
 
+function formatBsDate(bs) {
+  return `${String(bs.date).padStart(2, "0")}-${String(bs.month).padStart(2, "0")}-${bs.year} BS`;
+}
 function loadTodayBsDate() {
   const today = todayString();
   const bs = new DateConverter(today).toBs();
 
   document.getElementById("todayBs").textContent =
-    `${bs.year} ${bs.month} ${bs.date} BS`;
+  formatBsDate(bs);
 
   document.getElementById("todayAd").textContent =
     `${today} · ${bs.day}`;
