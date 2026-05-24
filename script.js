@@ -30,6 +30,15 @@ function convertAdToBs() {
   document.getElementById("adToBsDay").textContent = bs.day;
 }
 
+function clearForm() {
+  document.querySelectorAll("input").forEach(input => {
+    input.value = "";
+  });
+
+  document.getElementById("result").textContent = "Result appears here";
+  document.getElementById("dayResult").textContent = "Day of week appears here.";
+}
+
 function convertBsToAd() {
   const year = document.getElementById("bsYear").value;
   const month = document.getElementById("bsMonth").value.padStart(2, "0");
