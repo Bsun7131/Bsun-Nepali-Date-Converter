@@ -35,8 +35,12 @@ function clearForm() {
     input.value = "";
   });
 
-  document.getElementById("result").textContent = "Result appears here";
-  document.getElementById("dayResult").textContent = "Day of week appears here.";
+  document.getElementById("adToBsResult").textContent = "Result appears here";
+  document.getElementById("adToBsDay").textContent = "Day of week appears here.";
+
+  document.getElementById("bsToAdResult").textContent = "Result appears here";
+  document.getElementById("bsToAdDay").textContent = "Day of week appears here.";
+
 }
 
 function convertBsToAd() {
