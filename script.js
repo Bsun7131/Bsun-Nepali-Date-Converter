@@ -31,7 +31,7 @@ function convertAdToBs() {
   const bs = new DateConverter(adInput).toBs();
 
   document.getElementById("adToBsResult").textContent =
-    `${bs.year} ${bs.month} ${bs.date} BS`;
+  formatBsDate(bs);
 
   document.getElementById("adToBsDay").textContent = bs.day;
 }
@@ -63,7 +63,7 @@ function convertBsToAd() {
     const ad = new DateConverter(`${year}-${month}-${day}`).toAd();
 
     document.getElementById("bsToAdResult").textContent =
-      `${ad.year}-${String(ad.month).padStart(2, "0")}-${String(ad.date).padStart(2, "0")} AD`;
+  formatAdDate(ad);
 
     document.getElementById("bsToAdDay").textContent = ad.day;
   } catch (error) {
